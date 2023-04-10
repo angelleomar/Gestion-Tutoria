@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Panel administración{% endblock title %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div id="input-nav"><a href="{% url 'home' %}" class="primary1">Inicio</a> <i>&rsaquo;</i> Panel de administración</div>
+<!-- <br> -->
+<div class="title-1"><i class="fas fa-user-tie"></i>Panel de administración</div>
+<br>
+<br>
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'error' %}
+            <div class="alert alert-danger">
+                <i class="fas fa-exclamation-circle"></i>{{ message }}
+            </div>
+        {% else %}
+            <div class="alert alert-success">
+                <i class="fas fa-check-circle"></i>{{ message }}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+<div class="admin-panel">
+    <div class="row">
+        <div class="col-md-6 p-5 bg-gradient-light">
+           
+     
+            Programas y Cursos<a class="btn btn-sm btn-secondary" href="{% url 'programs' %}"> Direccionar &raquo;</a>
+            <p><span>&LongRightArrow;</span> Acciones (Crear, Recuperar, Actualizar y Eliminar) </p>
+           
+         
+            Noticias y Eventos<a class="btn btn-sm btn-secondary" href="{% url 'home' %}">Direccionar &raquo;</a>
+            <p><span>&LongRightArrow;</span> Acciones ((Crear, Recuperar, Actualizar y Eliminar) </p>
+        </div>
+    </div>
+
+
+{% endblock %}

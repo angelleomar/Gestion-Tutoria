@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block title %}PDFS{% endblock title %}
+
+{% block content %}
+
+
+<!--<title>Formulario de PDF en HTML CSS</title>-->
+    <!---Archivo CSS personalizado--->
+ 
+    <link rel="stylesheet" href="/static/css/pdf.css" />
+  </head>
+  <body>
+    <section class="container">
+        <label>Tipo de bitacora:</label>
+        <div class="select-box">
+            <select>
+              <option hidden>Selecione uno</option>
+              <option>Bitacora de registro del docente</option>
+              <option>Bitacora de</option>
+              <option>Bitacora de</option>
+              <option>Bitacora de</option>
+            </select>
+          </div>
+          <br>
+      <header>Bitacora de registro del docente</header>
+      <form action="#" class="form">
+        <div class="input-box">
+          <label>Nombre:</label>
+          <input type="text" placeholder="Nombre completo" required />
+        </div>
+
+        <div class="input-box">
+          <label>Correo:</label>
+          <input type="text" placeholder="correo electronico" required />
+        </div>
+
+        <div class="column">
+          <div class="input-box">
+            <label>Numero de telefono:</label>
+            <input type="number" placeholder="numero telefonico" required />
+          </div>
+          <div class="input-box">
+            <label>Fecha de nacimiento:</label>
+            <input type="date" placeholder="introducir fecha de nacimiento" required />
+          </div>
+        </div>
+        <div class="gender-box">
+          <h3>Genero</h3>
+          <div class="gender-option">
+            <div class="gender">
+              <input type="radio" id="check-male" name="gender" checked />
+              <label for="check-male">Hombre</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-female" name="gender" />
+              <label for="check-female">Mujer</label>
+            </div>
+            
+          </div>
+        </div>
+        <div class="input-box address">
+          <label>Address</label>
+          <input type="text" placeholder="Curso o taller recibido" required />
+          <input type="text" placeholder="Instacia que lo impartio" required />
+          <div class="input-box">
+            <label>Fecha del cursamiento</label>
+            <input type="date" placeholder="introducir fecha" required />
+          </div>
+          <div class="column">
+            <div class="select-box">
+              <select>
+                <option hidden>Ingeneria</option>
+                <option >Tecnologia Ambiental</option>
+                <option>Nanotecnologia</option>
+                <option>Energia</option>
+                <option>Animacion y efectos visuales</option>
+                <option>Financiera</option>
+                <option>Software</option>
+                <option>Agroindustrial</option>
+                <option>Logistica y Transpoortes</option>
+                <option>Mecatronica</option>
+                <option>Sistemas Automotrices</option>
+              </select>
+            </div>
+            <div class="select-box">
+              <select>
+                <option hidden>Turno</option>
+                <option>Matutino</option>
+                <option >Vespertino</option>
+                <option>Mixto</option>
+           
+              </select>
+            </div>
+            <input type="text" placeholder="lugar donde impartira la tutoria:" required />
+          </div>
+          <div class="column">
+            <input type="text" placeholder="Horario que cubrira el docente.tutor" required />
+       
+          </div>
+        </div>
+        <button>Generar</button>
+      </form>
+    </section>
+
+
+
+{% endblock content %}

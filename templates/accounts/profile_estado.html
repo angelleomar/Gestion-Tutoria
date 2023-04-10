@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block title %} {{ title }} | DjangoSMS{% endblock title %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+<div id="input-nav"><a href="{% url 'home' %}" class="primary1">Inicio</a> <i>&rsaquo;</i> {{ user.get_full_name }}</div>
+
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'error' %}
+            <div class="alert alert-danger">
+                <i class="fas fa-exclamation-circle"></i>{{ message }}
+            </div>
+        {% else %}
+            <div class="alert alert-success">
+                <i class="fas fa-check-circle"></i>{{ message }}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% if request.user.is_superuser %}
+<div class="btn-flex">
+  
+    {% if user.is_lecturer %}
+    <a class="edit-btn" href="{% url 'staff_edit' pk=user.id %}">
+        <i class="fas fa-user-edit"></i><span class="mobile-hide">Editar perfil</span>
+    </a>
+    {% endif %}
+    <!-- <a class="edit-btn" href="{% url 'change_password' %}"><i class="fas fa-lock"></i><span class="mobile-hide" >
+        Cambiar contraseña</span>
+    </a> -->
+</div>
+{% endif %}
+
+<div class="row justify-content-between">
+
+    <div class="col-md-3 mx-auto">
+        <div class="card">
+            <img src="{{ user.get_picture }}" class="dashboard-img">
+            <div class="program-description">
+                <p><strong>Linicio de sesión rápido: </strong>{{ user.last_login|date }}</p>
+                <p><strong>Nombre Completo: </strong>{{ user.get_full_name|title }}</p>
+                
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+
+                 <p class="form-title"><i class="fas fa-book-open"></i>Mi Informacion</p>
+            <div class="dashboard-description">
+            
+                    <div class="flex">
+                        
+                    </div>
+           
+                        <div class="text-danger"></div>
+         
+            </div>
+        
+            
+            <p class="title-info"><i class="fas fa-user"></i>Información personal</p>
+            <div class="dashboard-description">
+                <p><strong>Nombre(s):</strong> {{ user.first_name|title }}</p>
+                <p><strong>Apellidos:</strong> {{ user.last_name|title }}</p>
+                <p><strong>Matricula:</strong> {{ user.username }}</p>
+            </div>
+     
+                
+            <p class="title-info"><i class="fas fa-phone-square-alt"></i>Datos de contacto</p>
+            <div class="dashboard-description">
+                <p><strong>Correo:</strong> {{ user.email }}</p>
+                <p><strong>Telefono.:</strong> {{ user.phone }}</p>
+                <p><strong>Dirección:</strong> {{ user.address }}</p>
+            </div>
+            
+            <p class="title-info"><i class="fa fa-calendar-day"></i>Fechas importantes</p>
+            <div class="dashboard-description">
+                <p><strong>Último Acceso:</strong> {{ user.last_login }}</p>
+              
+                <p><strong>Fecha De Registro:</strong> {{ user.date_joined|date }}</p>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-3 mx-auto"></div>
+
+</div>
+{% endblock content %}
